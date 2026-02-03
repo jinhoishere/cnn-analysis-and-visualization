@@ -1,17 +1,29 @@
 # CNN visualization
 Convolution Neural Networks make sense through texts, but it's daunting to visualize how it works in our mind. By visualizing each step in CNN, it will give us some insights about how CNN works and a foundation that can contribute to understanding complex CNNs.
 
-## How to run this project
+### How to run this project
 - Clone this repository and install Python virtual environment by typing `python3 -m venv .venv` on terminal
 - Navigate to the project directory and type `pip install -r requirements.txt`
 - Type `python3 main.py` to run the script
 
-## Dataset
+### Content <br>
+*Click to move on to the corresponding section*
+- [01 - Dataset](#01---dataset)
+- [02 - Model Architecture](#02---model-architecture-simplecnn)
+- [03 - Visualization Methodology](#03---visualization-methodology)
+- [04 - Convolutional Layers Visualization](#04---visualization-of-convolutional-layers)
+- [05 - Fully Connected Layers Visualization](#05---visualization-of-fully-connected-layers)
+- [06 - ReLU Activation Visualization](#06---effect-of-relu-activation)
+- [07 - Class(digit)-wise Visualization](#07---class-wise-averaging-of-activations)
+- [08 - Limitation](#08---limitations)
+- [09 - Conclusion](#09---conclusion)
+
+## 01 - Dataset
 For the simplicity and examples, MNIST dataset is used in this project. MNIST dataset is a collection of hand-written digits, from 0 to 9, which consists of 60,000 training and 10,000 test images. All of them are gray-scale and have the size of pixels 28 by 28 with a single depth.
 
 ![random samples of MNIST](./data/figures/samples_mnist.png)
 
-## Model architecture (SimpleCNN)
+## 02 - Model architecture (SimpleCNN)
 Below is a diagram of the model used in this project called `simpleCNN`.
 
 ![Architecture of SimpleCNN](./data/figures/simpleCNN/AlexNet_style.png)
@@ -33,7 +45,7 @@ This simple architecture allows the model to progressively transform raw pixel v
 
 
 
-## Visualization Methodology
+## 03 - Visualization Methodology
 
 To analyze the internal behavior of the CNN, intermediate activations were extracted using [forward hooks in PyTorch](https://web.stanford.edu/~nanbhas/blog/forward-hooks-pytorch/). Forward hooks allow access to layer outputs during the forward pass without modifying the model architecture.
 
@@ -45,7 +57,7 @@ Activations were collected from the following layers:
 For each digit class (0–9), 500 input samples were passed through the model, and the corresponding activations were saved.  
 The activations were then averaged across samples belonging to the same class to obtain class-wise representative feature maps.
 
-## Visualization of Convolutional Layers
+## 04 - Visualization of Convolutional Layers
 
 The convolutional layers produce spatial feature maps that preserve local structure in the input image, allowing us to observe how the model progressively extracts visual patterns.
 
@@ -62,7 +74,7 @@ The convolutional layers produce spatial feature maps that preserve local struct
 From these visualizations, we observe that earlier layers respond strongly to simple geometric patterns such as vertical and horizontal strokes, while deeper layers emphasize more digit-specific structures (e.g. a diagonal stroke along with the horizontal one in 7). This hierarchical feature extraction enables the model to distinguish between different handwritten digits effectively.
 
 
-## Visualization of Fully Connected Layers
+## 05 - Visualization of Fully Connected Layers
 
 Unlike convolutional layers, fully connected layers operate on flattened feature vectors and therefore they do not preserve spatial structure.
 
@@ -79,7 +91,7 @@ The activations of `fc_2` show the final logit distribution for the input digit 
 
 
 
-## Effect of ReLU Activation  
+## 06 - Effect of ReLU Activation  
 ### Pre-activation vs. Post-activation
 
 A comparison was made between feature maps before and after applying the ReLU activation function in the convolutional layers. This visualization highlights how ReLU changes the distribution, magnitude, and sparsity of neuron activations.
@@ -151,7 +163,7 @@ Overall, these visualizations demonstrate how ReLU introduces non-linearity and 
 ReLU also improves training stability and learning efficiency by preserving gradients for positive activations (derivative = 1) while clipping negative ones to 0 (derivative = 0). This ensures that only active neurons contribute to weight updates during backpropagation, preventing gradients from becoming too small (vanishing) or too large (exploding).
 <br>
 
-## Class-wise Averaging of Activations
+## 07 - Class-wise Averaging of Activations
 
 For each digit class, activations were averaged across multiple (500) samples to obtain a representative activation pattern.
 
@@ -160,7 +172,7 @@ This approach highlights neurons that consistently respond to a specific digit.
 [***Here***](./data/figures/simpleCNN/class_wise.md) has more figures about how each digit looks as it passes through the model.
 
 
-## Limitations
+## 08 - Limitations
 
 Several limitations exist in this visualization approach:
 
@@ -169,7 +181,7 @@ Several limitations exist in this visualization approach:
 - The MNIST dataset is too simple, which restricts the complexity of learned features. As a result, some channels in the convolutional layers show very similar activation patterns, suggesting redundant feature learning due to limited task complexity rather than model deficiency.
 
 
-## Conclusion
+## 09 - Conclusion
 
 This project demonstrates how visualizing intermediate activations can improve interpretability of convolutional neural networks. By examining convolutional, fully connected, and activation layers, we gain insight into how features evolve from low-level patterns to high-level abstractions.
 
