@@ -1,3 +1,20 @@
+# Digit-wise Visualization
+Each digit consists of `conv_1`, `conv_2`, `fc_1`, and `fc_2` layers. <br>
+*Click a digit to see layer by layer visualization* <br>
+
+* [0](#0)
+* [1](#1) 
+* [2](#2) 
+* [3](#3) 
+* [4](#4) 
+* [5](#5) 
+* [6](#6) 
+* [7](#7) 
+* [8](#8) 
+* [9](#9)
+
+<br>
+
 # 0
 
 ## conv_1
