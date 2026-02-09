@@ -7,7 +7,9 @@ Convolution Neural Networks make sense through texts, but it's daunting to visua
 - Type `python3 main.py` to run the script
 
 ### Content <br>
-*Click to move on to the corresponding section*
+Click [***here***](./data/figures/simpleCNN/class_wise.md) to see the overall class-wise visualization. <br>
+
+*Or, Click any below to move on to the corresponding section*
 - [01 - Dataset](#01---dataset)
 - [02 - Model Architecture](#02---model-architecture-simplecnn)
 - [03 - Visualization Methodology](#03---visualization-methodology)
